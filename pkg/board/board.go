@@ -10,81 +10,68 @@ import (
 type Board struct {
 	Fields [][]*Field
 	frozen bool
+	numMines,
+	width,
+	height uint
 }
 
 func NewBoard(w, h, numMines uint) *Board {
 	result := &Board{
-		Fields: make([][]*Field, h),
+		Fields:   make([][]*Field, h),
+		width:    w,
+		height:   h,
+		numMines: numMines,
 	}
 
-	for n := range result.Fields {
-		result.Fields[n] = make([]*Field, w)
+	result.Fill()
 
-		for i := range result.Fields[n] {
-			result.Fields[n][i] = &Field{}
+	return result
+}
+
+func (b *Board) Fill() {
+	// reset board
+	for n := range b.Fields {
+		b.Fields[n] = make([]*Field, b.width)
+
+		for i := range b.Fields[n] {
+			b.Fields[n][i] = &Field{}
 		}
 	}
 
-	for mine := 0; mine < int(numMines); {
-		mineH := rand.Intn(int(h))
-		mineW := rand.Intn(int(w))
-		if !result.Fields[mineH][mineW].IsBomb() {
-			w, h := int(w), int(h)
-			result.Fields[mineH][mineW].value = Bomb
+	// fill board
+	for mine := 0; mine < int(b.numMines); {
+		mineH := rand.Intn(int(b.height))
+		mineW := rand.Intn(int(b.width))
+		if !b.Fields[mineH][mineW].IsBomb() {
+			b.Fields[mineH][mineW].value = Bomb
 
-			if iw, ih := mineW-1, mineH-1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
+			neighbours := []struct{ r, i int }{
+				{mineW - 1, mineH - 1},
+				{mineW, mineH - 1},
+				{mineW + 1, mineH - 1},
+				{mineW - 1, mineH},
+				{mineW + 1, mineH},
+				{mineW - 1, mineH + 1},
+				{mineW, mineH + 1},
+				{mineW + 1, mineH + 1},
 			}
 
-			if iw, ih := mineW, mineH-1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW+1, mineH-1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW-1, mineH; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW+1, mineH; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW-1, mineH+1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW, mineH+1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
-			}
-
-			if iw, ih := mineW+1, mineH+1; iw >= 0 && ih >= 0 &&
-				iw < w && ih < h &&
-				!result.Fields[ih][iw].IsBomb() {
-				result.Fields[ih][iw].value++
+			for _, n := range neighbours {
+				if n.r >= 0 && n.i >= 0 &&
+					n.r < int(b.height) && n.i < int(b.width) &&
+					!b.Fields[n.r][n.i].IsBomb() {
+					b.Fields[n.r][n.i].value++
+				}
 			}
 
 			mine++
 		}
 	}
+}
 
-	return result
+func (b *Board) Retry() {
+	b.frozen = false
+	b.Fill()
 }
 
 func (b *Board) Field(r, i int) *Field {
