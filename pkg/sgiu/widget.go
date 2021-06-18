@@ -99,5 +99,8 @@ func (w *widget) Build() {
 				giu.Row(row...).Build()
 			}
 		}),
+		giu.Button("Reset").OnClick(func() {
+			state.board.Retry()
+		}),
 	}.Build()
 }

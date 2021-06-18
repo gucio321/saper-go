@@ -45,7 +45,7 @@ func (b *Board) Fill() {
 		if !b.Fields[mineH][mineW].IsBomb() {
 			b.Fields[mineH][mineW].value = Bomb
 
-			neighbours := []struct{ r, i int }{
+			neighbours := []struct{ i, r int }{
 				{mineW - 1, mineH - 1},
 				{mineW, mineH - 1},
 				{mineW + 1, mineH - 1},
