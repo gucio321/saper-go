@@ -9,6 +9,7 @@ import (
 
 type Board struct {
 	Fields [][]*Field
+	frozen bool
 }
 
 func NewBoard(w, h, numMines uint) *Board {
@@ -106,7 +107,10 @@ func (b *Board) String() string {
 }
 
 func (b *Board) LeftClick(row, idx int) (IsLose bool) {
-	fmt.Println(b.Fields[row][idx].state)
+	if b.frozen {
+		return
+	}
+
 	if handled := b.Fields[row][idx].LeftClick(); !handled {
 		return
 	}
@@ -139,10 +143,29 @@ func (b *Board) LeftClick(row, idx int) (IsLose bool) {
 }
 
 func (b *Board) RightClick(row, idx int) {
+	if b.frozen {
+		return
+	}
+
 	b.Field(row, idx).RightClick()
 }
 
 func (b *Board) Lose() {
+	b.frozen = true
+
+	for _, row := range b.Fields {
+		for _, f := range row {
+			if f.value != Bomb {
+				continue
+			}
+
+			if f.state == MarkedBomb {
+				continue
+			}
+
+			f.state = Open
+		}
+	}
 }
 
 type Field struct {
