@@ -1,13 +1,16 @@
 package sgiu
 
 import (
-	"fmt"
+	"image/color"
 	"strconv"
 
+	"golang.org/x/image/colornames"
+
 	"github.com/AllenDang/giu"
+	"github.com/gucio321/saper-go/pkg/board"
 )
 
-const btnSize = 30
+const btnSize = 20
 
 type widget struct {
 	width, height, numMines uint
@@ -31,15 +34,58 @@ func (w *widget) Build() {
 				row := []giu.Widget{}
 				for idx := 0; idx < int(w.width); idx++ {
 					idx := idx
+
+					field := state.board.Field(r, idx)
+
+					var c, bgColor color.RGBA
+
+					switch field.State() {
+					case board.Open:
+						bgColor = colornames.Black
+					default:
+						bgColor = colornames.Green
+					}
+
+					switch field.State() {
+					case board.MarkedBomb:
+						c = colornames.Black
+					case board.MarkedUncertain:
+						c = colornames.Orange
+					case board.Open:
+						switch field.Value() {
+						case board.Bomb:
+							c = colornames.Red
+						case 1:
+							c = colornames.Green
+						case 2:
+							c = colornames.White
+						case 3:
+							c = colornames.Aqua
+						case 4:
+							c = colornames.Yellow
+						case 5:
+							c = colornames.Blue
+						case 6:
+							c = colornames.Violet
+						case 7, 8: // TODO - check this colors
+							c = colornames.White
+						}
+					}
+
 					row = append(row,
-						giu.Button(state.board.Field(r, idx).String()+"##boarditem"+strconv.Itoa(r)+strconv.Itoa(idx)).
-							Size(btnSize, btnSize),
+						giu.Style().
+							SetColor(giu.StyleColorText, c).
+							SetColor(giu.StyleColorButton, bgColor).
+							SetColor(giu.StyleColorButtonHovered, bgColor).
+							SetColor(giu.StyleColorButtonActive, colornames.Black).To(
+							giu.Button(field.String()+"##boarditem"+strconv.Itoa(r)+strconv.Itoa(idx)).
+								Size(btnSize, btnSize),
+						),
 						giu.Custom(func() {
 							if !giu.IsItemHovered() {
 								return
 							}
 
-							fmt.Println(r, idx)
 							switch {
 							case giu.IsMouseClicked(giu.MouseButtonLeft):
 								state.board.LeftClick(r, idx)

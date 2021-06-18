@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	wnd := giu.NewMasterWindow("Saper-go", 800, 600, 0, nil)
+	wnd := giu.NewMasterWindow("Saper-go", 800, 600, 0)
 	wnd.Run(func() {
 		giu.SingleWindow("game").Layout(
 			sgiu.Create(30, 16, 99),

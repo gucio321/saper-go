@@ -185,12 +185,15 @@ func (f *Field) Value() Value {
 	return f.value
 }
 
+func (f *Field) State() State {
+	return f.state
+}
+
 func (f Field) String() string {
 	lookup := map[State]string{
-		Blank: "",
-		// Blank:           f.value.String(),
+		Blank:           "",
 		Open:            f.value.String(),
-		MarkedBomb:      ">",
+		MarkedBomb:      "P",
 		MarkedUncertain: "?",
 	}
 
