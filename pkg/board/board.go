@@ -101,11 +101,17 @@ func (b *Board) LeftClick(row, idx int) (IsLose bool) {
 		return
 	}
 
-	if handled := b.Fields[row][idx].LeftClick(); !handled {
-		return
+	field := b.Field(row, idx)
+
+	switch field.state {
+	case Open:
+		// https://github.com/gucio321/saper-go/issues/1
+		return false
+	case MarkedUncertain, Blank:
+		field.state = Open
 	}
 
-	switch field := b.Fields[row][idx]; field.value {
+	switch field.value {
 	case Bomb:
 		b.Lose()
 		return true
@@ -125,7 +131,18 @@ func (b *Board) RightClick(row, idx int) {
 		return
 	}
 
-	b.Field(row, idx).RightClick()
+	field := b.Field(row, idx)
+
+	switch field.state {
+	case Open:
+		// noop
+	case Blank:
+		field.state = MarkedBomb
+	case MarkedBomb:
+		field.state = MarkedUncertain
+	case MarkedUncertain:
+		field.state = Blank
+	}
 }
 
 func (b *Board) Lose() {
@@ -153,33 +170,6 @@ type Field struct {
 
 func (f *Field) IsBomb() bool {
 	return f.value == Bomb
-}
-
-// LeftClick handler
-func (f *Field) LeftClick() (handled bool) {
-	// no action when bomb marked
-	switch f.state {
-	case MarkedBomb, Open:
-		return false
-	}
-
-	f.state = Open
-
-	return true
-}
-
-// RightClick handler
-func (f *Field) RightClick() {
-	switch f.state {
-	case Open:
-		return
-	case Blank:
-		f.state = MarkedBomb
-	case MarkedBomb:
-		f.state = MarkedUncertain
-	case MarkedUncertain:
-		f.state = Blank
-	}
 }
 
 func (f *Field) Value() Value {
