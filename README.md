@@ -42,7 +42,7 @@ import (
 
 func loop() {
 	giu.SingleWindow("game").Layout(
-		game.Create(16, 30, 99),
+		game.Create("minesweeper-game-instance-1", 16, 30, 99),
 	)
 }
 

@@ -14,13 +14,15 @@ const btnSize = 20
 
 type widget struct {
 	width, height, numMines uint
+	id                      string
 }
 
-func Create(w, h, m uint) giu.Widget {
+func Create(id string, w, h, m uint) giu.Widget {
 	return &widget{
 		width:    w,
 		height:   h,
 		numMines: m,
+		id:       id,
 	}
 }
 
@@ -78,7 +80,7 @@ func (w *widget) Build() {
 							SetColor(giu.StyleColorButton, bgColor).
 							SetColor(giu.StyleColorButtonHovered, bgColor).
 							SetColor(giu.StyleColorButtonActive, colornames.Black).To(
-							giu.Button(field.String()+"##boarditem"+strconv.Itoa(r)+strconv.Itoa(idx)).
+							giu.Button(field.String()+"##"+w.id+"boarditem"+strconv.Itoa(r)+strconv.Itoa(idx)).
 								Size(btnSize, btnSize),
 						),
 						giu.Custom(func() {
@@ -99,7 +101,7 @@ func (w *widget) Build() {
 				giu.Row(row...).Build()
 			}
 		}),
-		giu.Button("Reset").OnClick(func() {
+		giu.Button("Reset##" + w.id + "resetButton").OnClick(func() {
 			state.board.Retry()
 		}),
 	}.Build()

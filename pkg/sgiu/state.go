@@ -17,7 +17,7 @@ func (s *widgetState) Dispose() {
 }
 
 func (w *widget) getStateID() string {
-	return fmt.Sprintf("game_state")
+	return fmt.Sprintf("game_state_%s", w.id)
 }
 
 func (w *widget) setState(s *widgetState) {
