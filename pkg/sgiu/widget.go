@@ -7,6 +7,7 @@ import (
 	"golang.org/x/image/colornames"
 
 	"github.com/AllenDang/giu"
+
 	"github.com/gucio321/saper-go/pkg/board"
 )
 
@@ -17,6 +18,7 @@ type widget struct {
 	id                      string
 }
 
+// Create creates a widget
 func Create(id string, w, h, m uint) giu.Widget {
 	return &widget{
 		width:    w,
@@ -26,6 +28,7 @@ func Create(id string, w, h, m uint) giu.Widget {
 	}
 }
 
+// Build builds a widget (giu.Widget implementation)
 func (w *widget) Build() {
 	state := w.getState()
 
@@ -54,6 +57,7 @@ func (w *widget) Build() {
 					case board.MarkedUncertain:
 						c = colornames.Orange
 					case board.Open:
+						// nolint:gomnd // obvious meaning - a value of fields
 						switch field.Value() {
 						case board.Bomb:
 							c = colornames.Red
