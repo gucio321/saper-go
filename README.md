@@ -26,7 +26,7 @@ go get github.com/gucio321/saper-go
 
 ### usage
 
-project provides a giu widget for saper game
+project provides a giu widget for minesweeper game
 usage is very simple e.g.:
 
 <details><summary>code</summary>
