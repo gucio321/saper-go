@@ -1,11 +1,14 @@
 package board
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
-	"strings"
 )
+
+type pos struct {
+	row,
+	index int
+}
 
 type Board struct {
 	Fields [][]*Field
@@ -45,22 +48,11 @@ func (b *Board) Fill() {
 		if !b.Fields[mineH][mineW].IsBomb() {
 			b.Fields[mineH][mineW].value = Bomb
 
-			neighbours := []struct{ i, r int }{
-				{mineW - 1, mineH - 1},
-				{mineW, mineH - 1},
-				{mineW + 1, mineH - 1},
-				{mineW - 1, mineH},
-				{mineW + 1, mineH},
-				{mineW - 1, mineH + 1},
-				{mineW, mineH + 1},
-				{mineW + 1, mineH + 1},
-			}
+			neighbours := b.Neighbours(mineH, mineW)
 
 			for _, n := range neighbours {
-				if n.r >= 0 && n.i >= 0 &&
-					n.r < int(b.height) && n.i < int(b.width) &&
-					!b.Fields[n.r][n.i].IsBomb() {
-					b.Fields[n.r][n.i].value++
+				if !b.Fields[n.row][n.index].IsBomb() {
+					b.Fields[n.row][n.index].value++
 				}
 			}
 
@@ -74,23 +66,34 @@ func (b *Board) Retry() {
 	b.Fill()
 }
 
-func (b *Board) Field(r, i int) *Field {
-	return b.Fields[r][i]
-}
+// Neighbours returns a list of fields connecting with given
+func (b *Board) Neighbours(row, index int) []pos {
+	result := make([]pos, 0)
 
-func (b *Board) String() string {
-	board := *b
-	for h := range board.Fields {
-		for w := range board.Fields[h] {
-			if board.Fields[h][w].value == Bomb {
-				board.Fields[h][w].value = 9
-			}
+	possible := []pos{
+		{row - 1, index - 1},
+		{row - 1, index},
+		{row - 1, index + 1},
+		{row, index - 1},
+		{row, index + 1},
+		{row + 1, index - 1},
+		{row + 1, index},
+		{row + 1, index + 1},
+	}
+
+	// check if indexes exists
+	for _, p := range possible {
+		if p.row >= 0 && p.row < int(b.height) &&
+			p.index >= 0 && p.index < int(b.width) {
+			result = append(result, p)
 		}
 	}
 
-	boardS := fmt.Sprintln(board.Fields)
-	boardS = boardS[2:]
-	return strings.ReplaceAll(boardS, "] [", "\n")
+	return result
+}
+
+func (b *Board) Field(r, i int) *Field {
+	return b.Fields[r][i]
 }
 
 func (b *Board) LeftClick(row, idx int) (IsLose bool) {
@@ -107,22 +110,10 @@ func (b *Board) LeftClick(row, idx int) (IsLose bool) {
 		b.Lose()
 		return true
 	case 0:
-		neighbours := []struct{ r, i int }{
-			{row - 1, idx - 1},
-			{row - 1, idx},
-			{row - 1, idx + 1},
-			{row, idx - 1},
-			{row, idx + 1},
-			{row + 1, idx - 1},
-			{row + 1, idx},
-			{row + 1, idx + 1},
-		}
+		neighbours := b.Neighbours(row, idx)
 
 		for _, c := range neighbours {
-			if c.r >= 0 && c.i >= 0 &&
-				c.r < len(b.Fields) && c.i < len(b.Fields[0]) {
-				b.LeftClick(c.r, c.i)
-			}
+			b.LeftClick(c.row, c.index)
 		}
 	}
 
