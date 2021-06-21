@@ -83,7 +83,8 @@ func (w *widget) Build() {
 							SetColor(giu.StyleColorText, c).
 							SetColor(giu.StyleColorButton, bgColor).
 							SetColor(giu.StyleColorButtonHovered, bgColor).
-							SetColor(giu.StyleColorButtonActive, colornames.Black).To(
+							SetColor(giu.StyleColorButtonActive, colornames.Black).
+							SetStyle(giu.StyleVarItemSpacing, 50, 0).To(
 							giu.Button(field.String()+"##"+w.id+"boarditem"+strconv.Itoa(r)+strconv.Itoa(idx)).
 								Size(btnSize, btnSize),
 						),
@@ -102,7 +103,9 @@ func (w *widget) Build() {
 					)
 				}
 
-				giu.Row(row...).Build()
+				giu.Style().
+					SetStyle(giu.StyleVarItemSpacing, 0, 0).
+					To(giu.Row(row...)).Build()
 			}
 		}),
 		giu.Button("Reset##" + w.id + "resetButton").OnClick(func() {
