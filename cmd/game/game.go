@@ -8,7 +8,7 @@ import (
 
 const (
 	windowW, windowH         = 800, 600
-	boardW, boardH, numMines = 30, 16, 99
+	boardW, boardH, numMines = 5, 5, 3
 )
 
 func main() {

@@ -3,6 +3,7 @@ package board
 import (
 	"math/rand"
 	"strconv"
+	"time"
 )
 
 type pos struct {
@@ -17,6 +18,10 @@ type Board struct {
 	numMines,
 	width,
 	height uint
+
+	time   time.Time
+	ticker *time.Ticker
+	timeCB func()
 }
 
 // NewBoard creates a new board
@@ -26,9 +31,19 @@ func NewBoard(w, h, numMines uint) *Board {
 		width:    w,
 		height:   h,
 		numMines: numMines,
+		ticker:   time.NewTicker(1 * time.Second),
 	}
 
 	result.fill()
+
+	go func() {
+		for range result.ticker.C {
+			result.time = result.time.Add(time.Second)
+			if result.timeCB != nil {
+				result.timeCB()
+			}
+		}
+	}()
 
 	return result
 }
@@ -153,6 +168,22 @@ func (b *Board) RightClick(row, idx int) {
 	case MarkedUncertain:
 		field.state = Blank
 	}
+}
+
+func (b *Board) StopTimer() {
+	b.ticker.Stop()
+}
+
+func (b *Board) ResumeTimer() {
+	b.ticker.Reset(time.Second)
+}
+
+func (b *Board) UpdateTime(cb func()) {
+	b.timeCB = cb
+}
+
+func (b *Board) Time() time.Time {
+	return b.time
 }
 
 // lose handles a lose event

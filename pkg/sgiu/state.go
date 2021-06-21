@@ -36,6 +36,8 @@ func (w *widget) getState() *widgetState {
 			board: board.NewBoard(w.width, w.height, w.numMines),
 		}
 
+		state.board.UpdateTime(giu.Update)
+
 		w.setState(state)
 	}
 

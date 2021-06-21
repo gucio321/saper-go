@@ -33,6 +33,12 @@ func (w *widget) Build() {
 	state := w.getState()
 
 	giu.Layout{
+		// timer
+		giu.Custom(func() {
+			t := state.board.Time()
+			label := strconv.Itoa(t.Minute()) + ":" + strconv.Itoa(t.Second())
+			giu.Label(label).Build()
+		}),
 		// board
 		giu.Custom(func() {
 			for r := 0; r < int(w.height); r++ {
