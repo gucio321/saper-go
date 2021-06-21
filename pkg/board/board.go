@@ -71,7 +71,7 @@ func (b *Board) Retry() {
 	b.fill()
 }
 
-// Neighbors returns a list of fields connecting with given
+// Neighbours returns a list of fields connecting with given
 func (b *Board) Neighbours(row, index int) []pos {
 	result := make([]pos, 0)
 
@@ -104,7 +104,7 @@ func (b *Board) Field(r, i int) *Field {
 
 // LeftClick handles left click (should be called on left click on field)
 // in some graphic wrapper of the board
-func (b *Board) LeftClick(row, idx int) (IsLose bool) {
+func (b *Board) LeftClick(row, idx int) (isLose bool) {
 	if b.frozen {
 		return
 	}

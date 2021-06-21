@@ -6,11 +6,16 @@ import (
 	"github.com/gucio321/saper-go/pkg/sgiu"
 )
 
+const (
+	windowW, windowH         = 800, 600
+	boardW, boardH, numMines = 30, 16, 99
+)
+
 func main() {
-	wnd := giu.NewMasterWindow("Saper-go", 800, 600, 0)
+	wnd := giu.NewMasterWindow("Saper-go", windowW, windowH, 0)
 	wnd.Run(func() {
 		giu.SingleWindow("game").Layout(
-			sgiu.Create("examplegame", 30, 16, 99),
+			sgiu.Create("examplegame", boardW, boardH, numMines),
 		)
 	})
 }
