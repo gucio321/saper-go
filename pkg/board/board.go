@@ -2,10 +2,13 @@ package board
 
 import (
 	"crypto/rand"
+	"image/color"
 	"log"
 	"math/big"
 	"strconv"
 	"time"
+
+	"golang.org/x/image/colornames"
 )
 
 type pos struct {
@@ -254,6 +257,44 @@ func (f Field) String() string {
 	}
 
 	return s
+}
+
+func (f *Field) GetColors() (textColor, bgColor color.RGBA) {
+	switch f.State() {
+	case Open:
+		bgColor = colornames.Black
+	default:
+		bgColor = colornames.Green
+	}
+
+	switch f.State() {
+	case MarkedBomb:
+		textColor = colornames.Black
+	case MarkedUncertain:
+		textColor = colornames.Orange
+	case Open:
+		// nolint:gomnd // obvious meaning - a value of fields
+		switch f.Value() {
+		case Bomb:
+			textColor = colornames.Red
+		case 1:
+			textColor = colornames.Green
+		case 2:
+			textColor = colornames.White
+		case 3:
+			textColor = colornames.Aqua
+		case 4:
+			textColor = colornames.Yellow
+		case 5:
+			textColor = colornames.Blue
+		case 6:
+			textColor = colornames.Violet
+		case 7, 8: // TODO - check this colors
+			textColor = colornames.White
+		}
+	}
+
+	return
 }
 
 // Value represents a value of vield
