@@ -10,7 +10,7 @@ import (
 
 const (
 	windowW, windowH      = 800, 600
-	boardW, boardH, mines = 5, 5, 3
+	boardW, boardH, mines = 30, 16, 99
 )
 
 func main() {

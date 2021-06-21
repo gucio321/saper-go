@@ -1,6 +1,10 @@
 package sebiten
 
 import (
+	"bytes"
+	"image"
+	_ "image/png"
+
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/gofont/goregular"
 	"golang.org/x/image/font/opentype"
@@ -9,6 +13,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/text"
 
 	"github.com/gucio321/saper-go/pkg/board"
+	"github.com/gucio321/saper-go/pkg/sebiten/assets"
 )
 
 func newBoard(board *board.Board) (*gameBoard, error) {
@@ -30,6 +35,13 @@ func newBoard(board *board.Board) (*gameBoard, error) {
 		return nil, err
 	}
 
+	img, _, err := image.Decode(bytes.NewReader(assets.Flag))
+	if err != nil {
+		return nil, err
+	}
+
+	result.flag = ebiten.NewImageFromImage(img)
+
 	return result, nil
 }
 
@@ -37,6 +49,7 @@ type gameBoard struct {
 	*board.Board
 	font        font.Face
 	buttonPress bool
+	flag        *ebiten.Image
 }
 
 func (b *gameBoard) Update() {
@@ -95,18 +108,24 @@ func (b *gameBoard) Draw(screen *ebiten.Image) {
 
 			field := b.Field(y, x)
 
-			s := field.String()
+			switch field.State() {
+			case board.MarkedBomb:
+				// r := image.Rect(0, 0, posX, posY)
+				screen.DrawImage(b.flag, &ebiten.DrawImageOptions{})
+			default:
+				s := field.String()
 
-			textColor, _ := field.GetColors()
+				textColor, _ := field.GetColors()
 
-			labelSize := text.BoundString(b.font, s)
-			labelW := labelSize.Dx()
-			labelH := labelSize.Dy()
+				labelSize := text.BoundString(b.font, s)
+				labelW := labelSize.Dx()
+				labelH := labelSize.Dy()
 
-			labelX := posX + (fieldSize-labelW)/2
-			labelY := posY - (fieldSize-labelH)/2
+				labelX := posX + (fieldSize-labelW)/2
+				labelY := posY - (fieldSize-labelH)/2
 
-			text.Draw(screen, field.String(), b.font, labelX, labelY, textColor)
+				text.Draw(screen, field.String(), b.font, labelX, labelY, textColor)
+			}
 		}
 	}
 }
