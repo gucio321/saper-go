@@ -202,6 +202,14 @@ func (b *Board) Time() time.Time {
 	return b.time
 }
 
+func (b *Board) Height() uint {
+	return b.height
+}
+
+func (b *Board) Width() uint {
+	return b.width
+}
+
 // lose handles a lose event
 func (b *Board) lose() {
 	b.frozen = true
