@@ -90,13 +90,23 @@ func (b *gameBoard) Draw(screen *ebiten.Image) {
 	// render labels
 	for y := 0; y < int(b.Height()); y++ {
 		for x := 0; x < int(b.Width()); x++ {
+			// base position of the field
 			posX, posY := x*fieldSize, fieldSize+y*fieldSize
 
 			field := b.Field(y, x)
 
+			s := field.String()
+
 			textColor, _ := field.GetColors()
 
-			text.Draw(screen, field.String(), b.font, posX, posY, textColor)
+			labelSize := text.BoundString(b.font, s)
+			labelW := labelSize.Dx()
+			labelH := labelSize.Dy()
+
+			labelX := posX + (fieldSize-labelW)/2
+			labelY := posY - (fieldSize-labelH)/2
+
+			text.Draw(screen, field.String(), b.font, labelX, labelY, textColor)
 		}
 	}
 }
