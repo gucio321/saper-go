@@ -72,7 +72,7 @@ func (b *Board) Retry() {
 }
 
 // Neighbors returns a list of fields connecting with given
-func (b *Board) Neighbors(row, index int) []pos {
+func (b *Board) Neighbours(row, index int) []pos {
 	result := make([]pos, 0)
 
 	possible := []pos{
