@@ -1,7 +1,9 @@
 package board
 
 import (
-	"math/rand"
+	"crypto/rand"
+	"log"
+	"math/big"
 	"strconv"
 	"time"
 )
@@ -61,8 +63,19 @@ func (b *Board) fill() {
 
 	// fill board
 	for mine := 0; mine < int(b.numMines); {
-		mineH := rand.Intn(int(b.height))
-		mineW := rand.Intn(int(b.width))
+		mineHBigInt, err := rand.Int(rand.Reader, big.NewInt(int64(b.height)))
+		if err != nil {
+			log.Panic(err)
+		}
+
+		mineH := int(mineHBigInt.Int64())
+
+		mineWBigInt, err := rand.Int(rand.Reader, big.NewInt(int64(b.width)))
+		if err != nil {
+			log.Panic(err)
+		}
+
+		mineW := int(mineWBigInt.Int64())
 
 		if !b.Fields[mineH][mineW].IsBomb() {
 			b.Fields[mineH][mineW].value = Bomb
