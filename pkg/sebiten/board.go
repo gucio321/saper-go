@@ -73,14 +73,11 @@ func (b *gameBoard) Draw(screen *ebiten.Image) {
 				continue
 			}
 
-			// b.Board.LeftClick(y/fieldSize, x/fieldSize)
-
 			idxX, idxY := x/fieldSize, y/fieldSize
 			field := b.Field(idxY, idxX)
 			_, bgColor := field.GetColors()
 
 			img.Set(x, y, bgColor)
-
 		}
 
 	}
