@@ -7,8 +7,8 @@ github.com/AllenDang/imgui-go v1.12.1-0.20210617113257-a210d0333fc7/go.mod h1:+p
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ebitengine/purego v0.0.0-20220629143800-0a7163731eab h1:GHslKjCls+AxLWDLQpRfbovF2s4EZy5E5szb6+zZoPw=
-github.com/ebitengine/purego v0.0.0-20220629143800-0a7163731eab/go.mod h1:Eh8I3yvknDYZeCuXH9kRNaPuHEwvXDCk378o9xszmHg=
+github.com/ebitengine/purego v0.0.0-20220729024107-78cdc2949de6 h1:kc3Im5Yj31aW0r3VdXHk+urwClkQilDBAYYp0TXeqE8=
+github.com/ebitengine/purego v0.0.0-20220729024107-78cdc2949de6/go.mod h1:Eh8I3yvknDYZeCuXH9kRNaPuHEwvXDCk378o9xszmHg=
 github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3 h1:baVdMKlASEHrj19iqjARrPbaRisD7EuZEVJj6ZMLl1Q=
 github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3/go.mod h1:VEPNJUlxl5KdWjDvz6Q1l+rJlxF2i6xqDeGuGAxa87M=
 github.com/go-gl/gl v0.0.0-20210315015930-ae072cafe09d/go.mod h1:482civXOzJJCPzJ4ZOX/pwvXBWSnzD4OKMdH4ClKGbk=
@@ -22,12 +22,13 @@ github.com/go-resty/resty/v2 v2.6.0 h1:joIR5PNLM2EFqqESUjCMGXrWmXNHEU9CEiK813oKY
 github.com/go-resty/resty/v2 v2.6.0/go.mod h1:PwvJS6hvaPkjtjNg9ph+VrSD92bi5Zq73w/BIH7cC3Q=
 github.com/hajimehoshi/bitmapfont/v2 v2.2.0 h1:E6vzlchynZj6OVohVKFqWkKW348EmDW62K5zPXDi7A8=
 github.com/hajimehoshi/bitmapfont/v2 v2.2.0/go.mod h1:Llj2wTYXMuCTJEw2ATNIO6HbFPOoBYPs08qLdFAxOsQ=
-github.com/hajimehoshi/ebiten/v2 v2.4.0-alpha.10 h1:qG2ioqKGKkmgbs5CB7/FOJ6/OahMXJGAX+cU9Tk0o0Q=
-github.com/hajimehoshi/ebiten/v2 v2.4.0-alpha.10/go.mod h1:UDMFiqx0PYjAIKHCJtffqgCwvjI4gt6NOXuSknyg4Po=
+github.com/hajimehoshi/ebiten/v2 v2.4.0-alpha.11 h1:VrpbyeOqW1k0AzB3OKKq+hbgrwgcu79TddA6MVz2XAE=
+github.com/hajimehoshi/ebiten/v2 v2.4.0-alpha.11/go.mod h1:O+l0/JoY2KTQ1NvFNCWlV1iufZ5OIfqb2lSJdDK81gM=
+github.com/hajimehoshi/file2byteslice v0.0.0-20210813153925-5340248a8f41 h1:s01qIIRG7vN/5ndLwkDktjx44ulFk6apvAjVBYR50Yo=
 github.com/hajimehoshi/file2byteslice v0.0.0-20210813153925-5340248a8f41/go.mod h1:CqqAHp7Dk/AqQiwuhV1yT2334qbA/tFWQW0MD2dGqUE=
 github.com/hajimehoshi/go-mp3 v0.3.3/go.mod h1:qMJj/CSDxx6CGHiZeCgbiq2DSUkbK0UbtXShQcnfyMM=
 github.com/hajimehoshi/oto v0.6.1/go.mod h1:0QXGEkbuJRohbJaxr7ZQSxnju7hEhseiPx2hrh6raOI=
-github.com/hajimehoshi/oto/v2 v2.3.0-alpha.5.0.20220724061447-489daa21788a/go.mod h1:seWLbgHH7AyUMYKfKYT9pg7PhUu9/SisyJvNTT+ASQo=
+github.com/hajimehoshi/oto/v2 v2.3.0-alpha.6.0.20220802151442-4f655ffe7bb4/go.mod h1:ZH5KyijkM53TgspdS9sArUe7vv9EP7x4aNYJAmfGhvE=
 github.com/jakecoffman/cp v1.2.1/go.mod h1:JjY/Fp6d8E1CHnu74gWNnU0+b9VzEdUVPoJxg2PsTQg=
 github.com/jezek/xgb v1.0.1 h1:YUGhxps0aR7J2Xplbs23OHnV1mWaxFVcOl9b+1RQkt8=
 github.com/jezek/xgb v1.0.1/go.mod h1:nrhwO0FX/enq75I7Y7G8iN1ubpSGZEiA3v9e9GyRFlk=
