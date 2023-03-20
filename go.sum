@@ -7,8 +7,8 @@ github.com/AllenDang/imgui-go v1.12.1-0.20220322114136-499bbf6a42ad/go.mod h1:ku
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ebitengine/purego v0.3.0-alpha h1:7eoxaayPodJU34x1xmFE9INXm9h9quDoREmCum07z8E=
-github.com/ebitengine/purego v0.3.0-alpha/go.mod h1:iIjxzd6CiRiOG0UyXP+V1+jWqUXVjPKLAI0mRfJZTmQ=
+github.com/ebitengine/purego v0.4.0-alpha h1:rFFkUz6M6smelVR2+oLaIwBS7z0c2A3mNtn2EN+TvmA=
+github.com/ebitengine/purego v0.4.0-alpha/go.mod h1:iIjxzd6CiRiOG0UyXP+V1+jWqUXVjPKLAI0mRfJZTmQ=
 github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3 h1:baVdMKlASEHrj19iqjARrPbaRisD7EuZEVJj6ZMLl1Q=
 github.com/faiface/mainthread v0.0.0-20171120011319-8b78f0a41ae3/go.mod h1:VEPNJUlxl5KdWjDvz6Q1l+rJlxF2i6xqDeGuGAxa87M=
 github.com/go-gl/gl v0.0.0-20211210172815-726fda9656d6 h1:zDw5v7qm4yH7N8C8uWd+8Ii9rROdgWxQuGoJ9WDXxfk=
@@ -19,11 +19,11 @@ github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b h1:GgabKamyOY
 github.com/go-gl/glfw/v3.3/glfw v0.0.0-20221017161538-93cebf72946b/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
 github.com/hajimehoshi/bitmapfont/v2 v2.2.3 h1:jmq/TMNj352V062Tr5e3hAoipkoxCbY1JWTzor0zNps=
 github.com/hajimehoshi/bitmapfont/v2 v2.2.3/go.mod h1:sWM8ejdkGSXaQGlZcegMRx4DyEPOWYyXqsBKIs+Yhzk=
-github.com/hajimehoshi/ebiten/v2 v2.5.0-alpha.14 h1:7mWXA/Ehyno4mHJ6O/tSt5ov0fFPWHwl1GHysmfNSPU=
-github.com/hajimehoshi/ebiten/v2 v2.5.0-alpha.14/go.mod h1:jsYj8TB2QUJSUqfW5LJPAuPSTZ+qmmx09M5TuFOYfFw=
+github.com/hajimehoshi/ebiten/v2 v2.6.0-alpha h1:lccwDGy0YeV6i0hxGJeW1BuUR+QBJ31C01GL2mjoa5A=
+github.com/hajimehoshi/ebiten/v2 v2.6.0-alpha/go.mod h1:4y29SMiEvly3+yS4oGjjSK8Vt3z43E+FASmkbKQk20I=
 github.com/hajimehoshi/go-mp3 v0.3.4/go.mod h1:fRtZraRFcWb0pu7ok0LqyFhCUrPeMsGRSVop0eemFmo=
 github.com/hajimehoshi/oto/v2 v2.3.1/go.mod h1:seWLbgHH7AyUMYKfKYT9pg7PhUu9/SisyJvNTT+ASQo=
-github.com/hajimehoshi/oto/v2 v2.4.0-alpha.13/go.mod h1:jqq61RF13bcB4FM2PuciF4lCL0i+GMlabqUleUWOh8U=
+github.com/hajimehoshi/oto/v2 v2.5.0-alpha.0.20230315035531-31c83ff4311d/go.mod h1:HGiZnUkxl2+l+fNpiYJFfzhs4N1KeYaksFcnB8FmqDw=
 github.com/jakecoffman/cp v1.2.1/go.mod h1:JjY/Fp6d8E1CHnu74gWNnU0+b9VzEdUVPoJxg2PsTQg=
 github.com/jezek/xgb v1.1.0 h1:wnpxJzP1+rkbGclEkmwpVFQWpuE2PUGNUzP8SbfFobk=
 github.com/jezek/xgb v1.1.0/go.mod h1:nrhwO0FX/enq75I7Y7G8iN1ubpSGZEiA3v9e9GyRFlk=
