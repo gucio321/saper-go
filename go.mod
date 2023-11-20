@@ -4,6 +4,6 @@ go 1.16
 
 require (
 	github.com/AllenDang/giu v0.7.0
-	github.com/hajimehoshi/ebiten/v2 v2.7.0-alpha.2
+	github.com/hajimehoshi/ebiten/v2 v2.7.0-alpha.4
 	golang.org/x/image v0.14.0
 )
