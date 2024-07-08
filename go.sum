@@ -1,7 +1,7 @@
 github.com/AllenDang/cimgui-go v0.0.0-20240424153022-294abe7370df h1:onXInWfJVhU1b6pvMf8wgkKNTwBiqKEIVWIumk/IM7Y=
 github.com/AllenDang/cimgui-go v0.0.0-20240424153022-294abe7370df/go.mod h1:e6feXR4FrATVY/UrWS3si3KCJOm0wruwbxVI/B85fUM=
-github.com/AllenDang/giu v0.8.0 h1:XDxQ691/CX+ETivpmnGD02sQqwL6eyppPj95tT9NqQs=
-github.com/AllenDang/giu v0.8.0/go.mod h1:J1q89uXIkxRShC7lSxdL53LZxsWLKKibM8qkpzjMUe8=
+github.com/AllenDang/giu v0.8.1 h1:tWApn79v2Vima4aPzmuWkBB+TEmXufXDeHdXWIcSvSk=
+github.com/AllenDang/giu v0.8.1/go.mod h1:ut6UO5zmkYfvQB7rdPDS9yb2EnfpRvlTv2Qht4bqzK8=
 github.com/AllenDang/go-findfont v0.0.0-20200702051237-9f180485aeb8 h1:dKZMqib/yUDoCFigmz2agG8geZ/e3iRq304/KJXqKyw=
 github.com/AllenDang/go-findfont v0.0.0-20200702051237-9f180485aeb8/go.mod h1:b4uuDd0s6KRIPa84cEEchdQ9ICh7K0OryZHbSzMca9k=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
@@ -78,7 +78,6 @@ golang.org/x/crypto v0.23.0/go.mod h1:CKFgDieR+mRhux2Lsu27y0fO304Db0wZe70UKqHu0v
 golang.org/x/crypto v0.24.0/go.mod h1:Z1PMYSOR5nyMcyAVAIQSKCDwalqy85Aqn1x3Ws4L5DM=
 golang.org/x/image v0.3.0/go.mod h1:fXd9211C/0VTlYuAcOhW8dY/RtEJqODXOWBDpmYBf+A=
 golang.org/x/image v0.16.0/go.mod h1:ugSZItdV4nOxyqp56HmXwH0Ry0nBCpjnZdpDaIHdoPs=
-golang.org/x/image v0.17.0/go.mod h1:4yyo5vMFQjVjUcVk4jEQcU9MGy/rulF5WvUILseCM2E=
 golang.org/x/image v0.18.0 h1:jGzIakQa/ZXI1I0Fxvaa9W7yP25TqT6cHIHn+6CqvSQ=
 golang.org/x/image v0.18.0/go.mod h1:4yyo5vMFQjVjUcVk4jEQcU9MGy/rulF5WvUILseCM2E=
 golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4/go.mod h1:jJ57K6gSWd91VN4djpZkiMVwK6gcyfeH4XE8wZrZaV4=
