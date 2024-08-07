@@ -1,3 +1,5 @@
+i didn't finish that project yet and I'm not going to in the nearest future.
+
 ## Description
 
 The Saper Go is an implementation of [Minesweeper]() game written in
